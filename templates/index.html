@@ -5,5 +5,21 @@
     <h2> We added this content using jinja template</h2>
 
     <p>{{some_text}}</p>
-    <p>Current Year " {{current_year}}</p>
+    <p>Current Year : {{current_year}}</p>
+
+
+    {% for city in cities %}
+        <p>{{city}}</p>
+    {% endfor %}
+
+    {% if cities %}
+        <p>The cities varibale exists</p>
+    {% else %}
+        <p>There are no cities.</p>
+
+    {% if countries %}
+        <p>The countries varibale exists</p>
+    {% else %}
+        <p>There are no countries.</p>
+
 {% endblock content %}
