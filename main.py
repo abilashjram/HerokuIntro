@@ -12,7 +12,7 @@ def index():
     cities = ["Winnipeg", "Brandon", "Steinbach", "Westhawk"]
     return render_template("index.html", some_text=some_text, current_year=current_year, cities=cities)
 
-@app.route("/about")
+@app.route("/about", methods=["GET"])
 def about():
     return render_template("about.html")
 
