@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
 import datetime
 
 
@@ -15,7 +15,9 @@ def index():
 @app.route("/about", methods=["GET", "POST"])
 def about():
     if request.method == "GET":
-        return render_template("about.html")
+        user_name = request.cookies.get("user_name")
+        return render_template("about.html", user_name=user_name)
+
     elif request.method == "POST":
         contact_name = request.form.get("contact-name")
         contact_email = request.form.get("contact-email")
@@ -25,7 +27,10 @@ def about():
         print(contact_email)
         print(contact_message)
 
-        return render_template("success.html")
+        response = make_response(render_template("success.html"))
+        response.set_cookie("user_name", contact_name)
+
+        return response
 
 
 @app.route("/contact", methods=["POST"])

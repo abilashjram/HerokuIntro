@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% if user_name %}
+    <p> Hello {{user_name}}</p>
+    {% else %}
     <h1> Hello, this is About Me section</h1>
-    <h2> My Name is Abilash and I am an instructor in SmartNinja</h2>
-
+    {% endif %}
 
     <form method="post" action="/about">
         <input type="text" name="contact-name" placeholder="Enter Your Name">
